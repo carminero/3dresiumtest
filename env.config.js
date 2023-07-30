@@ -31,7 +31,7 @@ const copyPluginPatterns = {
 };
 
 const definePluginOpts = {
-    CESIUM_BASE_URL: JSON.stringify(""),
+    CESIUM_BASE_URL: JSON.stringify('./'),
 };
 
 

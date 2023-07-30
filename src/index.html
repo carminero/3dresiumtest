@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>App</title>
+    <script>
+        <!-- fix webgl no tsupported from browser/cesium url unknowed -->
+        window.CESIUM_BASE_URL = window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + '/';
+    </script>
+
+
     <link rel="stylesheet" href="/Widgets/widgets.css" />
 </head>
 

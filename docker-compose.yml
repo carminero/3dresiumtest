@@ -1,0 +1,23 @@
+version: '3.9'
+
+# Common App
+x-cesium-common-3d-resium-app:
+  &default-cesium-common-3d-resium-app
+  #image: geonode/geonode:latest-ubuntu-22.10
+  image: cesium-common-3d-resium-app:local
+  restart: unless-stopped
+  env_file:
+    - .env
+
+services:
+  cesium-common-3d-resium-app:
+    << : *default-cesium-common-3d-resium-app
+    build:
+      context: .
+    environment:
+      - CESIUM_BASE_URL="http://192.168.1.200"  
+    container_name:
+      cesium-3d-resium-app
+    ports:
+      - "8580:80"
+     

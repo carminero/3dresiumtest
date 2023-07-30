@@ -14,6 +14,20 @@ module.exports = (env, options) =>
         module: {
             rules: [
                 {
+                    test: /\.js$/,
+                    exclude: /node_modules/,
+                    include: path.resolve(__dirname, 'src'),
+                    use: "babel-loader",
+                  },
+                  {
+                    test: /\.css$/,
+                    use: ["style-loader", "css-loader"],
+                  },
+                  {
+                    test: /\.(png|gif|jpg|jpeg|svg|xml|json)$/,
+                    use: ["url-loader"],
+                  },
+                {
                     test: /\.tsx?$/,
                     use: [{loader: 'ts-loader', options: {onlyCompileBundledFiles: true}}],
                     exclude: /node_modules/,
@@ -65,7 +79,9 @@ module.exports = (env, options) =>
             extensions: [".tsx", ".ts", ".js"] ,
             alias: {
                 "cesium": path.resolve("node_modules/cesium")
-            }
+            },
+            fallback: { "https": false, "zlib": false, "http": false, "url": false },
+            
         },
         output: {
             filename: "js/[name].bundle.js",
